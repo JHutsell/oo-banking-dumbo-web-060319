@@ -14,17 +14,31 @@ class Transfer
     @sender.valid? && @receiver.valid?
   end
   
+  # def execute_transaction
+  #   if @status != "complete"
+  #     if valid? 
+  #       @sender.balance -= @amount 
+  #       @receiver.balance += @amount 
+  #       @status = "complete"
+  #       return nil
+  #     end
+  #   end
+  #   @status = "rejected"
+  #   "Transaction rejected. Please check your account balance."
+  # end
+  
   def execute_transaction
-    if @status != "complete"
-      if valid? 
-        @sender.balance -= @amount 
-        @receiver.balance += @amount 
-        @status = "complete"
-        return nil
-      end
+    if self.status !="complete"
+        if valid?
+            @sender.balance-=@amount
+            @receiver.balance+=@amount
+              @status="complete"
+              return nil
+        end
     end
-    @status = "rejected"
-    "Transaction rejected. Please check your account balance."
+
+  @status="rejected"
+  return "Transaction rejected. Please check your account balance."
   end
   
 end
