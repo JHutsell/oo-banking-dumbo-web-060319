@@ -18,6 +18,10 @@ class BankAccount
     @balance > 0
   end
   
+  def close_account 
+    
+  end
+  
   
   
 end
